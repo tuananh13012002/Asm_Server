@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        .content {
+            width: 50%;
+           margin-top: 50px;
+        }
+        .content form{
+            display: flex;
+            flex-direction: column;
+        }
+        .content form input{
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .btn button{
+            width: 30%;
+            border:  1px solid black;
+            border-radius: 10px;
+            background-color: transparent;
+            box-shadow: 0px 1px 5px 0px #888888;
+        }
+        .btn button:hover{
+            width: 30%;
+            border:  1px solid black;
+            border-radius: 10px;
+            background-color: black;
+            color: white;
+            box-shadow: 0px 1px 5px 0px #888888;
+        }
+        .right {
+            margin-top: 20px;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+        .item{
+            width: 60%;
+        }
+        .content1 {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .content1:hover .image {
+            opacity: 0.7;
+        }
+
+        .content1:hover .middle {
+            opacity: 1;
+        }
+        .tag {
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .tag p {
+            font-size: 14px;
+        }
+
+        .tag p:hover {
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        .titleNoiDung {
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            text-transform: uppercase;
+            font-size: 18px
+        }
+
+        .titleNoiDung:hover {
+            cursor: pointer;
+            color: #00B7FF;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+        .date {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .share {
+            cursor: pointer;
+            font-size: 12px;
+            color: #696666
+        }
+
+        .share:hover {
+            cursor: pointer;
+            font-size: 12px;
+            color: #00B7FF;
+        }
+
+        #box {
+            padding-top: 30px;
+            padding-bottom: 20px;
+            background-color: white;
+            height: 300px;
+            box-shadow: 0px 1px 7px 0px #888888;
+            margin-bottom: 20px;
+        }
+        .item:hover #box {
+            padding-top: 30px;
+            padding-bottom: 20px;
+            background-color: white;
+            height: 300px;
+            box-shadow: 0px 1px 10px 0px #888888;
+        }
+        .footer{
+            cursor: pointer;
+            margin-left: 10px;
+            color: #00B7FF;
+
+        }
+        .footer:hover{
+            cursor: pointer;
+            margin-left: 10px;
+            color: #00B7FF;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="container-full">
+<% include nav.ejs %>
+<div class="container-full" style="background: #efeded;">
+    <div class="container" style="display: flex;flex-direction: row;height: auto">
+        <div class="content">
+            <form action="/updateHinhNen" method="post" enctype="application/x-www-form-urlencoded">
+                <input name="id" type="hidden" value="<%= data._id %>">
+                <input name="noiDung" required placeholder="Nhập nội dung" value="<%= data.noiDung %>">
+                <input type="date" name="ngayThang" required placeholder="Nhập ngày tháng" value="<%= data.ngayThang %>">
+                <input name="linkAnh" required placeholder="Nhập link ảnh" value="<%= data.linkAnh %>">
+                <div class="btn">
+                    <button type="submit" name="update">Update</button>
+                </div>
+            </form>
+        </div>
+        <div class="right">
+            <div class="item">
+                <div class="content1">
+                    <img src="<%= data.linkAnh %>" alt="Avatar" class="image"
+                         style="width:100%;height: 600px">
+                    <div class="middle">
+                        <form method="post" action="/showdetail">
+                            <input type="hidden" name="id" value="<%= data._id %>">
+                            <button style="background-color: transparent;border: none">
+                                <img src="images/image.png" width="60px" height="60px">
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div id="box" class="container" style="background-color:white">
+                    <div class="tag">
+                        <img src="https://img.icons8.com/plumpy/344/tag.png" width="20" height="20">
+                        <p style="margin-left: 10px; color: #00B7FF;">#Hình nền động</p>
+                        <p>,</p>
+                        <p style="margin-left: 10px; color: #00B7FF;">#Ngầu</p>
+                    </div>
+                    <form method="post" action="/showdetail">
+                        <button style="border: none;width: 300px;background-color: transparent">
+                            <input type="hidden" name="id" value="<%= data._id %>">
+                            <h4 style="padding-top: 10px;transition: .3s ease"
+                                class="titleNoiDung"><%= data.noiDung %></h4>
+                        </button>
+                    </form>
+
+                    <p style="padding-top: 10px;overflow: hidden; text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;color: #888888"><%= data.noiDung %>
+                        . Bạn rất thích trang trí cho dế yêu của bạn ? Trang web này sẽ luôn cung cấp cho các bạn
+                        những hình nền điện thoại đẹp và theo xu hướng mới nhất. Hình nền điện thoại được lựa chọn
+                        từ nhiều
+                        nguồn khác nhau và chọn lọc kĩ càng với chất lượng tốt nhất.</p>
+                    <div class="date">
+                        <img src="images/date.png" width="15px" height="15px">
+                        <p style="font-size: 12px;color: #696666;margin-left: 10px"><%= data.ngayThang %></p>
+                        <img src="images/share.png" width="17px" height="17px" style="margin-left: 10px">
+                        <p class="share" style="margin-left: 10px">Share</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-full" style="background-color: white;height: 250px;margin-top: 30px;">
+    <div style="display: flex;flex-direction: row;padding-top: 150px;padding-left: 200px">
+        <div>POWER BY</div>
+        <a style=" text-decoration: none;" href="http://localhost:3000/">
+            <div class="footer" >HÌNH NỀN ĐIỆN THOẠI ĐẸP</div>
+        </a>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+-->
+</body>
+</html>

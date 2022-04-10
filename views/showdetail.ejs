@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        .a {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }
+
+        .a .tooltiptext {
+            visibility: hidden;
+            width: 100px;
+            background-color: #28a9e0;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .a .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #28a9e0 transparent transparent transparent;
+        }
+
+        .a:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .share {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .user {
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+        }
+
+        .my {
+            font-size: 12px;
+            color: #28a9e0;
+            margin: 3px;
+        }
+
+        .my:hover {
+            font-size: 12px;
+            color: #000000;
+            margin: 3px;
+        }
+
+        .date {
+            font-size: 12px;
+            color: #28a9e0;
+            margin: 3px;
+            margin-left: 5px
+        }
+
+        .date:hover {
+            font-size: 12px;
+            color: black;
+            margin: 3px;
+            margin-left: 5px
+        }
+
+        .left {
+            width: 60%;
+        }
+
+        .download {
+            color: #00B7FF;
+            font-size: 16px;
+        }
+
+        .download:hover {
+            font-size: 16px;
+            color: #00B7FF;
+            text-decoration: underline;
+        }
+
+        .right {
+            width: 40%;
+            padding-left: 100px;
+        }
+
+        .search {
+            width: 100%;;
+            display: flex;
+            flex-direction: row;
+            border: none;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: 0px 1px 5px 0px #3a3939
+        }
+
+        .search:hover {
+            width: 100%;;
+            display: flex;
+            flex-direction: row;
+            border: none;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: 0px 1px 10px 0px #3a3939
+        }
+
+        .labels1 {
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 1px 5px 0px;
+            width: 50%;
+            background-color: white;
+            text-align: center;
+        }
+
+        .labels1:hover {
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 1px 5px 0px;
+            width: 50%;
+            text-align: center;
+            background-color: #00B7FF;
+            transition: .5s ease;
+        }
+
+        .labels2 {
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 1px 5px 0px;
+            width: 30%;
+            background-color: white;
+            text-align: center;
+            margin-left: 20px
+        }
+
+        .labels2:hover {
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 1px 5px 0px;
+            width: 30%;
+            text-align: center;
+            margin-left: 20px;
+            background-color: #00B7FF;
+            transition: .5s ease;
+
+        }
+
+        .labels3 {
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 1px 5px 0px;
+            width: 30%;
+            background-color: white;
+            text-align: center;
+            margin-top: 15px
+        }
+
+        .labels3:hover {
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 1px 5px 0px;
+            width: 30%;
+            text-align: center;
+            margin-top: 15px;
+            background-color: #00B7FF;
+            transition: .5s ease;
+        }
+
+        .labels1:hover .textLabel {
+            color: white;
+        }
+
+        .labels2:hover .textLabel {
+            color: white;
+        }
+
+        .labels3:hover .textLabel {
+            color: white;
+        }
+
+        .textLabel {
+            font-size: 14px;
+            padding: 3px;
+        }
+
+        .popular {
+            cursor: pointer;
+            position: relative;
+            width: 18%;
+            background-color: black;
+            border-radius: 50px;
+        }
+
+        .image {
+            border-radius: 50px;
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .popular:hover .image {
+            opacity: 0.3;
+        }
+
+        .popular:hover .middle {
+            opacity: 1;
+        }
+
+        .titlePopular {
+            cursor: pointer;
+            color: #04a4e1;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        .titlePopular:hover {
+            cursor: pointer;
+            color: #007aa6;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        .footer{
+            cursor: pointer;
+            margin-left: 10px;
+            color: #00B7FF;
+
+        }
+        .footer:hover{
+            cursor: pointer;
+            margin-left: 10px;
+            color: #00B7FF;
+            text-decoration: underline;
+        }
+
+    </style>
+
+</head>
+<body class="container-full">
+<% include nav.ejs %>
+<div class="container-full" style="background: #efeded">
+    <div class="container" style="display: flex;flex-direction: row">
+        <div class="left">
+            <p style="font-size: 35px"><%= data.noiDung %></p>
+            <div class="share" style="margin-top: 20px">
+                <img src="images/share.png" width="17px" height="17px" style="margin-top: 9px;margin-right: 5px">
+                <p class="share" style="margin-top: 8px;margin-right: 10px;font-size: 12px;color: #696666">Share</p>
+                <div class="a"><img src="https://img.icons8.com/color/2x/facebook-circled.png" width="40px"
+                                    height="40px">
+                    <span class="tooltiptext">Share to Facebook</span>
+                </div>
+                <div class="a"><img src="https://img.icons8.com/fluency/2x/twitter-circled.png" width="40px"
+                                    height="40px">
+                    <span class="tooltiptext">Share to Twitter</span>
+                </div>
+                <div class="a"><img src="https://img.icons8.com/fluency/2x/pinterest.png" width="40px" height="40px">
+                    <span class="tooltiptext">Share to Pinterest</span>
+                </div>
+                <div class="a"><img src="https://img.icons8.com/stickers/2x/reddit.png" width="40px" height="40px">
+                    <span class="tooltiptext">Share to Reddit</span>
+                </div>
+                <div style="margin-top: 4px ; margin-left: 4px" class="a"><img
+                            src="https://cdn-icons-png.flaticon.com/128/1782/1782765.png" width="33px" height="33px">
+                    <span class="tooltiptext">Email</span>
+                </div>
+            </div>
+            <div class="user">
+                <img src="https://img.icons8.com/material-outlined/344/user--v1.png" width="20px" height="20px">
+                <p style="color: #696666;font-size: 12px;margin: 3px;margin-left: 5px">by</p>
+                <p class="my">My Favorite Wallpaper</p>
+                <img style="margin: 3px;margin-left: 10px" src="images/date.png" width="20px" height="20px">
+                <p style="font-size: 12px;color: #696666;margin: 3px;margin-left: 5px">Poster at</p>
+                <p class="date"><%= data.ngayThang %></p>
+            </div>
+            <h2 style="font-size: 30px"><%= data.noiDung %></h2>
+            <div>
+                Bạn rất thích trang trí cho dế yêu của bạn ? Trang web này sẽ luôn cung cấp cho các bạn
+                những hình nền điện thoại đẹp và theo xu hướng mới nhất. Hình nền điện thoại được lựa chọn từ nhiều
+                nguồn khác nhau và chọn lọc kĩ càng với chất lượng tốt nhất.
+            </div>
+            <div style="width: 100%; text-align: center;margin-top: 10px">
+                <img src="<%= data.linkAnh %>" width="50%" height="600px">
+                <div><%= data.noiDung %></div>
+                <p class="download">Download</p>
+            </div>
+        </div>
+        <div class="right">
+            <div style="width: 100%;float: left">
+                <div style="display: flex;flex-direction: row">
+                    <div style="width: 5px;height: 20px;background-color: #00B7FF;margin-top: 7px;margin-right: 10px"></div>
+                    <div style="font-size: 20px">Search This Blog</div>
+                </div>
+                <form style="margin-top: 10px;padding-bottom: 20px">
+                    <div class="search">
+                        <input style="width: 85%;margin: 10px;border: none;outline: none" type="search"
+                               placeholder="Search"
+                               aria-label="Search">
+                        <button style="border: none;background-color: transparent;padding-bottom: 5px" type="submit">
+                            <img src="https://img.icons8.com/ios-glyphs/344/search--v1.png" width="20px" height="20px">
+                        </button>
+                    </div>
+                </form>
+                <hr>
+                <div style="display: flex;flex-direction: row;margin-top: 25px">
+                    <div style="width: 5px;height: 20px;background-color: #00B7FF;margin-top: 7px;margin-right: 10px"></div>
+                    <div style="font-size: 20px">Labels</div>
+                </div>
+                <div style="display: flex;flex-direction: row;margin-top: 20px">
+                    <div class="labels1">
+                        <div class="textLabel">HÌNH NỀN ĐỘNG _469</div>
+                    </div>
+                    <div class="labels2">
+                        <div class="textLabel">ANIME _219</div>
+                    </div>
+                </div>
+                <div class="labels3">
+                    <div class="textLabel">AR72014 _1</div>
+                </div>
+                <div style="display: flex;flex-direction: row;margin-top: 30px">
+                    <div style="width: 5px;height: 20px;background-color: #00B7FF;margin-top: 7px;margin-right: 10px"></div>
+                    <div style="font-size: 20px">Popular Posts</div>
+                </div>
+                <div style="display: flex;flex-direction: row;margin-top: 20px">
+                    <div class="popular">
+                        <img src="https://1.bp.blogspot.com/-v7YbJc6lYk4/YUr8GaNpp_I/AAAAAAABOI8/_YXcAbxi5ScznW1hYAtjg1AqWajMUJPgwCLcBGAsYHQ/w72-h72-p-k-no-nu/spirited%2Baway%2Blive%2Bwallpaper.gif"
+                             alt="Avatar" class="image" style="width:100%">
+                        <div class="middle">
+                            <img src="images/image.png" width="30px" height="30px">
+                        </div>
+                    </div>
+                    <p class="titlePopular">Hình nền động Vùng đất linh hồn</p>
+                </div>
+                <div style="display: flex;flex-direction: row;margin-top: 20px">
+                    <div class="popular">
+                        <img src="https://1.bp.blogspot.com/-JlQyUneKD6g/YPKuJ8EjEMI/AAAAAAABNzI/64LN1SDXzBwwvFm4ZZcLwkcFJ8qSFBw1ACLcBGAsYHQ/w72-h72-p-k-no-nu/Cool%2Blive%2Bwallpaper.gif"
+                             alt="Avatar" class="image" style="width:100%">
+                        <div class="middle">
+                            <img src="images/image.png" width="30px" height="30px">
+                        </div>
+                    </div>
+                    <p class="titlePopular">Hình nền động siêu ngầu</p>
+                </div>
+                <div style="display: flex;flex-direction: row;margin-top: 20px">
+                    <div class="popular">
+                        <img src="https://1.bp.blogspot.com/-xqV80lRrd3g/YGxMru1k4KI/AAAAAAABNLY/ZqoEXuxCpSgxXRYbGe25WA02hCmKI602wCLcBGAsYHQ/w72-h72-p-k-no-nu/Sad%2Blive%2Bwallpaper.gif"
+                             alt="Avatar" class="image" style="width:100%">
+                        <div class="middle">
+                            <img src="images/image.png" width="30px" height="30px">
+                        </div>
+                    </div>
+                    <p class="titlePopular">Hình nền động một ngày buồn bã</p>
+                </div>
+                <div style="display: flex;flex-direction: row;margin-top: 20px">
+                    <div class="popular">
+                        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhzDkC_cnjxVNfZ1jbMiWc110vhtAqBuuqin2bSSAeDSE6BtC3x__jfK5I11wtIGFWzYDf8XpSRjXU9w283TREMgfE4KlRa9nugv-IlS__73zF25txonDZLx8J-WoUbnjeehHONcd5znD4Z81Elywybly71Sap9MtGDq5TdYOuWnla1u3TjWGpmqQVG=w72-h72-p-k-no-nu"
+                             alt="Avatar" class="image" style="width:100%">
+                        <div class="middle">
+                            <img src="images/image.png" width="30px" height="30px">
+                        </div>
+                    </div>
+                    <p class="titlePopular">Hình nền động chill giữa khung cảnh yên bình</p>
+                </div>
+                <div style="display: flex;flex-direction: row;margin-top: 20px">
+                    <div class="popular">
+                        <img src="https://1.bp.blogspot.com/-665K3RV-U7o/X-fl_CTULUI/AAAAAAABMkE/QB5EF594HvsFvRlURFTnTcUMxusk7pHXQCLcBGAsYHQ/w72-h72-p-k-no-nu/Naruto%2BLive%2Bwallpaper.gif"
+                             alt="Avatar" class="image" style="width:100%">
+                        <div class="middle">
+                            <img src="images/image.png" width="30px" height="30px">
+                        </div>
+                    </div>
+                    <p class="titlePopular">Hình nền động Naruto</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-full" style="background-color: white;height: 250px;margin-top: 30px;">
+        <div style="display: flex;flex-direction: row;padding-top: 150px;padding-left: 200px">
+            <div>POWER BY</div>
+            <a style=" text-decoration: none;" href="http://localhost:3000/">
+                <div class="footer" >HÌNH NỀN ĐIỆN THOẠI ĐẸP</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+-->
+</body>
+</html>
